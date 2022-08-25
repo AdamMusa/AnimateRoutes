@@ -17,20 +17,20 @@ AnimatedRoute is a minimalist library to provider some cool transition animation
 
 AnimatedRoute isn't a route manger itself is just a hack of productivy .
 AnimatedRoute allow you to open snackbar, open bottomSheet and dialog easily with less boilerplate .
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+<!-- TODO: List what your package can do. Maybe include images, gifs, or videos. -->
 
 ## Getting started
 
 # Installing
 
-Add Get to your pubspec.yaml file:
+Add animate_routes to your pubspec.yaml file:
 
 ```yaml
 dependencies:
   animate_routes:
 ```
 
-Import get in files that it will be used:
+Import animate_routes in files that it will be used:
 
 ```dart
 import 'package:animate_routes/animate_routes.dart';
@@ -47,6 +47,10 @@ Navigator.of(context).push(AnimatedRoute(transition:Transition.downToUp,screen:H
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Want to contribute to the project? We will be proud to highlight you as one of our collaborators. Here are some points where you can contribute and make animate_routes even better.
+
+- Helping to add more features
+- Offering PRs for code/tests.
+- Including new functions.
+
+Any contribution is welcome!
