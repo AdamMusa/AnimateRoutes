@@ -20,16 +20,28 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+# Installing
+
+Add Get to your pubspec.yaml file:
+
+```yaml
+dependencies:
+  animate_routes:
+```
+
+Import get in files that it will be used:
+
+```dart
+import 'package:animate_routes/animate_routes.dart';
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+
 
 ```dart
-const like = 'sample';
+context.go(AnimateRoute(transition:Transition.downToUp,screen:Home()))
+or 
+Navigator.of(context).push(AnimateRoute(transition:Transition.downToUp,screen:Home()))
 ```
 
 ## Additional information
