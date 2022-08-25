@@ -145,11 +145,10 @@ AnimateRoute({required transition, required Widget screen}) {
               route, context, animation, secondaryAnimation, child);
         },
       );
-     case Transition.cupertino:
+    case Transition.cupertino:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        
           return CupertinoPageTransition(
             primaryRouteAnimation: animation,
             secondaryRouteAnimation: secondaryAnimation,
@@ -181,11 +180,16 @@ AnimateRoute({required transition, required Widget screen}) {
         pageBuilder: (context, animation, secondaryAnimation) => screen,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return CircularRevealTransition().buildTransitions(
-              context, Curves.bounceIn, Alignment.center, animation, secondaryAnimation, child);
+              context,
+              Curves.bounceIn,
+              Alignment.center,
+              animation,
+              secondaryAnimation,
+              child);
         },
       );
     default:
-    return PageRouteBuilder(
+      return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return child;

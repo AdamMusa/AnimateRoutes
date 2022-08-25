@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'circular_reveal_clipper.dart';
 
-
 class CircularRevealTransition {
   Widget buildTransitions(
       BuildContext context,

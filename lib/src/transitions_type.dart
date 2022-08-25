@@ -1,4 +1,3 @@
-
 enum Transition {
   fade,
   fadeIn,
@@ -15,4 +14,3 @@ enum Transition {
   circularReveal,
   // native,
 }
-
