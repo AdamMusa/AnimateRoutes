@@ -1,5 +1,5 @@
 name: animate_routes
-description: A new Flutter package project.
+description: AnimatedRoute is A minimalist library to provider some cool animation transition when you navigate between the screens.
 version: 0.0.1
 homepage: https://github.com/AdamMusa/AnimateRoutes
 
