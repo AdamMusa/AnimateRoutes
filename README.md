@@ -11,11 +11,12 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+AnimatedRoute is a minimalist library to provider some cool transition animation when you navigate between the screens ,also provide some shorcuts to navigate easily and you can open the dialog in just three lines of code . 
 
 ## Features
 
+AnimatedRoute isn't a route manger itself is just a hack of productivy .
+AnimatedRoute allow you to open snackbar, open bottomSheet and dialog easily with less boilerplate .
 TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
@@ -39,9 +40,9 @@ import 'package:animate_routes/animate_routes.dart';
 
 
 ```dart
-context.go(AnimateRoute(transition:Transition.downToUp,screen:Home()))
+context.go(AnimatedRoute(transition:Transition.downToUp,screen:Home()))
 or 
-Navigator.of(context).push(AnimateRoute(transition:Transition.downToUp,screen:Home()))
+Navigator.of(context).push(AnimatedRoute(transition:Transition.downToUp,screen:Home()))
 ```
 
 ## Additional information
