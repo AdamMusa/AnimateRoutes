@@ -1,12 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:animate_routes/src/transitions_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'transitions_type.dart';
 import 'default_transitions.dart';
 
-AnimatedRoute({required transition, required Widget screen}) {
+AnimateRoute({required transition, required Widget screen}) {
   /// This basically takes the Nextscreen you would like to navigate to
 
   switch (transition) {
