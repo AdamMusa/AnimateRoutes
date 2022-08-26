@@ -42,6 +42,20 @@ or
 Navigator.of(context).push(AnimateRoute(transition:Transition.downToUp,screen:Home()));
 ```
 
+## animate_routes provide a cool and easy api to open dialog 
+
+with animate_routes is very  easi to open and animate dialog with just one line of code
+```dart
+context.openDialog();
+
+or 
+
+context.openDialog(
+  transition:TransitionDialog.left,
+  title: 'My title',
+  content: "My content"
+);
+```
 
 
 Want to contribute to the project? We will be proud to highlight you as one of our collaborators. Here are some points where you can contribute and make animate_routes even better.
