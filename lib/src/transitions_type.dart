@@ -1,3 +1,6 @@
+/// route Transition type .
+/// pick one and apply transition between the screen
+
 enum Transition {
   fade,
   fadeIn,

@@ -9,6 +9,7 @@ AnimateRoute({required transition, required Widget screen}) {
   /// This basically takes the Nextscreen you would like to navigate to
 
   switch (transition) {
+    /// transition down to up the screen
     case Transition.downToUp:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
@@ -28,7 +29,10 @@ AnimateRoute({required transition, required Widget screen}) {
           );
         },
       );
+    /// transition  up to down the screen
+
     case Transition.upToDown:
+
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -42,6 +46,8 @@ AnimateRoute({required transition, required Widget screen}) {
               child: child);
         },
       );
+    /// transition rigth to left the screen
+
     case Transition.rightToLeft:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
@@ -55,6 +61,8 @@ AnimateRoute({required transition, required Widget screen}) {
           );
         },
       );
+    /// transition left to right the screen
+
     case Transition.leftToRight:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
@@ -68,6 +76,8 @@ AnimateRoute({required transition, required Widget screen}) {
           );
         },
       );
+    /// zoom transition  the screen
+
     case Transition.zoom:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
@@ -78,6 +88,9 @@ AnimateRoute({required transition, required Widget screen}) {
           );
         },
       );
+
+    /// transition size of screen
+
     case Transition.size:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
@@ -87,6 +100,9 @@ AnimateRoute({required transition, required Widget screen}) {
               route, context, animation, secondaryAnimation, child);
         },
       );
+
+    /// transition of screen with fade
+
     case Transition.fadeIn:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
@@ -114,6 +130,9 @@ AnimateRoute({required transition, required Widget screen}) {
                       child: child)));
         },
       );
+
+    /// transition the  screen with fade also
+
     case Transition.leftToRightWithFade:
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,

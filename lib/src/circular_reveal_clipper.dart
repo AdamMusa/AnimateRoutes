@@ -3,6 +3,7 @@ import 'dart:ui' show lerpDouble;
 
 import 'package:flutter/material.dart';
 
+/// rotation transition
 class CircularRevealClipper extends CustomClipper<Path> {
   final double fraction;
   final Alignment? centerAlignment;
