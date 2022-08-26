@@ -9,6 +9,7 @@ AnimateRoute({required transition, required Widget screen}) {
   /// This basically takes the Nextscreen you would like to navigate to
 
   switch (transition) {
+
     /// transition down to up the screen
     case Transition.downToUp:
       return PageRouteBuilder(
@@ -29,10 +30,10 @@ AnimateRoute({required transition, required Widget screen}) {
           );
         },
       );
+
     /// transition  up to down the screen
 
     case Transition.upToDown:
-
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => screen,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -46,6 +47,7 @@ AnimateRoute({required transition, required Widget screen}) {
               child: child);
         },
       );
+
     /// transition rigth to left the screen
 
     case Transition.rightToLeft:
@@ -61,6 +63,7 @@ AnimateRoute({required transition, required Widget screen}) {
           );
         },
       );
+
     /// transition left to right the screen
 
     case Transition.leftToRight:
@@ -76,6 +79,7 @@ AnimateRoute({required transition, required Widget screen}) {
           );
         },
       );
+
     /// zoom transition  the screen
 
     case Transition.zoom:

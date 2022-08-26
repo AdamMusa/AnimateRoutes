@@ -5,13 +5,12 @@ import 'package:vector_math/vector_math.dart' as math;
 
 // ignore: camel_case_extensions
 extension navigationHelper on BuildContext {
-
   /// go to an other screen
   go(Route route) {
     Navigator.of(this).push(route);
   }
 
-/// back to 
+  /// back to
   back() {
     Navigator.of(this).pop();
   }
@@ -24,11 +23,19 @@ extension navigationHelper on BuildContext {
   offAll(Route route) {
     Navigator.of(this).pushReplacement(route);
   }
-/// open dialog with just lines of code 
-/// dialog take a few optional params and TransitionDialog type
-  Future openDialog({TransitionDialog? transition , String? title,String? content,String? cancel,String? next ,List<Widget>? actions,VoidCallback? onCancel,VoidCallback? onNext}) async {
+
+  /// open dialog with just lines of code
+  /// dialog take a few optional params and TransitionDialog type
+  Future openDialog(
+      {TransitionDialog? transition,
+      String? title,
+      String? content,
+      String? cancel,
+      String? next,
+      List<Widget>? actions,
+      VoidCallback? onCancel,
+      VoidCallback? onNext}) async {
     switch (transition) {
-      
       case TransitionDialog.rotate:
         return showGeneralDialog<void>(
           context: this,
@@ -38,7 +45,14 @@ extension navigationHelper on BuildContext {
           transitionBuilder: (ctx, a1, a2, child) {
             return Transform.rotate(
               angle: math.radians(a1.value * 360),
-              child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
+              child: _dialog(ctx,
+                  title: title,
+                  content: content,
+                  cancel: cancel,
+                  next: next,
+                  actions: actions,
+                  onCancel: onCancel,
+                  onNext: onNext),
             );
           },
           transitionDuration: const Duration(milliseconds: 400),
@@ -53,129 +67,171 @@ extension navigationHelper on BuildContext {
             var curve = Curves.easeInOut.transform(a1.value);
             return Transform.scale(
               scale: curve,
-              child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
+              child: _dialog(ctx,
+                  title: title,
+                  content: content,
+                  cancel: cancel,
+                  next: next,
+                  actions: actions,
+                  onCancel: onCancel,
+                  onNext: onNext),
             );
           },
           transitionDuration: const Duration(milliseconds: 400),
         );
       case TransitionDialog.right:
-       return showGeneralDialog<void>(
+        return showGeneralDialog<void>(
           context: this,
           pageBuilder: (ctx, a1, a2) {
             return Container();
           },
           transitionDuration: const Duration(milliseconds: 400),
           transitionBuilder: (ctx, a1, a2, child) {
-          return SlideTransition(
-            transformHitTests: false,
-            position: Tween<Offset>(
-              begin: const Offset(1.0, 0.0),
-              end: Offset.zero,
-            ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child:_dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
-          );
+            return SlideTransition(
+              transformHitTests: false,
+              position: Tween<Offset>(
+                begin: const Offset(1.0, 0.0),
+                end: Offset.zero,
+              ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
+              child: _dialog(ctx,
+                  title: title,
+                  content: content,
+                  cancel: cancel,
+                  next: next,
+                  actions: actions,
+                  onCancel: onCancel,
+                  onNext: onNext),
+            );
           },
-       );
-       case TransitionDialog.left:
-       return showGeneralDialog<void>(
+        );
+      case TransitionDialog.left:
+        return showGeneralDialog<void>(
           context: this,
           pageBuilder: (ctx, a1, a2) {
             return Container();
           },
           transitionDuration: const Duration(milliseconds: 400),
           transitionBuilder: (ctx, a1, a2, child) {
-          return SlideTransition(
-            transformHitTests: false,
-            position: Tween<Offset>(
-              begin: const Offset(-1.0, 0.0),
-              end: Offset.zero,
-            ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
-          );
+            return SlideTransition(
+              transformHitTests: false,
+              position: Tween<Offset>(
+                begin: const Offset(-1.0, 0.0),
+                end: Offset.zero,
+              ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
+              child: _dialog(ctx,
+                  title: title,
+                  content: content,
+                  cancel: cancel,
+                  next: next,
+                  actions: actions,
+                  onCancel: onCancel,
+                  onNext: onNext),
+            );
           },
-       );
-      
-       case TransitionDialog.downToUp:
-       return showGeneralDialog<void>(
+        );
+
+      case TransitionDialog.downToUp:
+        return showGeneralDialog<void>(
           context: this,
           pageBuilder: (ctx, a1, a2) {
             return Container();
           },
           transitionDuration: const Duration(milliseconds: 400),
           transitionBuilder: (ctx, a1, a2, child) {
-          return SlideTransition(
-            transformHitTests: false,
-            position: Tween<Offset>(
-              begin: const Offset(0.0, 1.0),
-              end: Offset.zero,
-            ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
-          );
+            return SlideTransition(
+              transformHitTests: false,
+              position: Tween<Offset>(
+                begin: const Offset(0.0, 1.0),
+                end: Offset.zero,
+              ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
+              child: _dialog(ctx,
+                  title: title,
+                  content: content,
+                  cancel: cancel,
+                  next: next,
+                  actions: actions,
+                  onCancel: onCancel,
+                  onNext: onNext),
+            );
           },
-       );
-       case TransitionDialog.topToDown:
-       return showGeneralDialog<void>(
+        );
+      case TransitionDialog.topToDown:
+        return showGeneralDialog<void>(
           context: this,
           pageBuilder: (ctx, a1, a2) {
             return Container();
           },
           transitionDuration: const Duration(milliseconds: 400),
           transitionBuilder: (ctx, a1, a2, child) {
-          return SlideTransition(
-            transformHitTests: false,
-            position: Tween<Offset>(
-              begin: const Offset(0.0, -1.0),
-              end: Offset.zero,
-            ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
-          );
+            return SlideTransition(
+              transformHitTests: false,
+              position: Tween<Offset>(
+                begin: const Offset(0.0, -1.0),
+                end: Offset.zero,
+              ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
+              child: _dialog(ctx,
+                  title: title,
+                  content: content,
+                  cancel: cancel,
+                  next: next,
+                  actions: actions,
+                  onCancel: onCancel,
+                  onNext: onNext),
+            );
           },
-       );
-      
-      default :
-      return showDialog<void>(
+        );
+
+      default:
+        return showDialog<void>(
           context: this,
           barrierDismissible: false, // user must tap button!
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text(title?? 'AlertDialog Title'),
-              content:  Text(content??"Simple Dialog content"),
+              title: Text(title ?? 'AlertDialog Title'),
+              content: Text(content ?? "Simple Dialog content"),
               actions: <Widget>[
                 TextButton(
-                  onPressed: onCancel??()=>back(),
-                  child: Text(cancel?? 'cancel'),
-                  
+                  onPressed: onCancel ?? () => back(),
+                  child: Text(cancel ?? 'cancel'),
                 ),
-                 TextButton(
-                  onPressed:onNext?? ()=>back(),
-                  child: Text(next??'Approve'),
-                  
+                TextButton(
+                  onPressed: onNext ?? () => back(),
+                  child: Text(next ?? 'Approve'),
                 ),
               ],
             );
           },
         );
-
     }
   }
 }
 
 /// main widget to open a dilog
-Widget _dialog(BuildContext context, {String? title,String? content,String? cancel,String? next ,List<Widget>? actions,VoidCallback? onCancel,VoidCallback? onNext}) {
+Widget _dialog(BuildContext context,
+    {String? title,
+    String? content,
+    String? cancel,
+    String? next,
+    List<Widget>? actions,
+    VoidCallback? onCancel,
+    VoidCallback? onNext}) {
   return AlertDialog(
-    title: Text(title?? "Dialog title"),
-    content: Text(content??"Simple Dialog content"),
-    actions: actions?? <Widget>[
-      TextButton(
-          onPressed: onCancel?? () {
-            Navigator.of(context).pop();
-          },
-          child: Text(cancel??"cancel")),
-       TextButton(
-          onPressed:onNext?? () {
-            Navigator.of(context).pop();
-          },
-          child: Text(next??"continue"))
-    ],
+    title: Text(title ?? "Dialog title"),
+    content: Text(content ?? "Simple Dialog content"),
+    actions: actions ??
+        <Widget>[
+          TextButton(
+              onPressed: onCancel ??
+                  () {
+                    Navigator.of(context).pop();
+                  },
+              child: Text(cancel ?? "cancel")),
+          TextButton(
+              onPressed: onNext ??
+                  () {
+                    Navigator.of(context).pop();
+                  },
+              child: Text(next ?? "continue"))
+        ],
   );
 }

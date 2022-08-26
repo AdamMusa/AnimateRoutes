@@ -1,6 +1,6 @@
 name: animate_routes
 description: animate_routes is a minimalist library to provider some cool animation transition when you navigate between the screens.
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/AdamMusa/AnimateRoutes
 
 environment:
