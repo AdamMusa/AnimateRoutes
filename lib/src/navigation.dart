@@ -26,7 +26,7 @@ extension navigationHelper on BuildContext {
   }
 /// open dialog with just lines of code 
 /// dialog take a few optional params and TransitionDialog type
-  Future openDialog({TransitionDialog? transition}) async {
+  Future openDialog({TransitionDialog? transition , String? title,String? content,String? cancel,String? next ,List<Widget>? actions,VoidCallback? onCancel,VoidCallback? onNext}) async {
     switch (transition) {
       
       case TransitionDialog.rotate:
@@ -38,7 +38,7 @@ extension navigationHelper on BuildContext {
           transitionBuilder: (ctx, a1, a2, child) {
             return Transform.rotate(
               angle: math.radians(a1.value * 360),
-              child: _dialog(ctx),
+              child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
             );
           },
           transitionDuration: const Duration(milliseconds: 400),
@@ -53,7 +53,7 @@ extension navigationHelper on BuildContext {
             var curve = Curves.easeInOut.transform(a1.value);
             return Transform.scale(
               scale: curve,
-              child: _dialog(ctx),
+              child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
             );
           },
           transitionDuration: const Duration(milliseconds: 400),
@@ -72,7 +72,7 @@ extension navigationHelper on BuildContext {
               begin: const Offset(1.0, 0.0),
               end: Offset.zero,
             ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child: _dialog(ctx),
+            child:_dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
           );
           },
        );
@@ -90,7 +90,7 @@ extension navigationHelper on BuildContext {
               begin: const Offset(-1.0, 0.0),
               end: Offset.zero,
             ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child: _dialog(ctx),
+            child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
           );
           },
        );
@@ -109,7 +109,7 @@ extension navigationHelper on BuildContext {
               begin: const Offset(0.0, 1.0),
               end: Offset.zero,
             ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child: _dialog(ctx),
+            child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
           );
           },
        );
@@ -127,7 +127,7 @@ extension navigationHelper on BuildContext {
               begin: const Offset(0.0, -1.0),
               end: Offset.zero,
             ).chain(CurveTween(curve: Curves.bounceIn)).animate(a1),
-            child: _dialog(ctx),
+            child: _dialog(ctx, title: title,content:content, cancel:cancel, next:next ,actions:actions,onCancel:onCancel, onNext:onNext),
           );
           },
        );
@@ -138,19 +138,17 @@ extension navigationHelper on BuildContext {
           barrierDismissible: false, // user must tap button!
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('AlertDialog Title'),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: const <Widget>[
-                    Text('This is a demo alert dialog.'),
-                    Text('Would you like to approve of this message?'),
-                  ],
-                ),
-              ),
+              title: Text(title?? 'AlertDialog Title'),
+              content:  Text(content??"Simple Dialog content"),
               actions: <Widget>[
                 TextButton(
-                  child: const Text('Approve'),
-                  onPressed: ()=>back(),
+                  onPressed: onCancel??()=>back(),
+                  child: Text(cancel?? 'cancel'),
+                  
+                ),
+                 TextButton(
+                  onPressed:onNext?? ()=>back(),
+                  child: Text(next??'Approve'),
                   
                 ),
               ],
@@ -163,16 +161,21 @@ extension navigationHelper on BuildContext {
 }
 
 /// main widget to open a dilog
-Widget _dialog(BuildContext context) {
+Widget _dialog(BuildContext context, {String? title,String? content,String? cancel,String? next ,List<Widget>? actions,VoidCallback? onCancel,VoidCallback? onNext}) {
   return AlertDialog(
-    title: const Text("Dialog title"),
-    content: const Text("Simple Dialog content"),
-    actions: <Widget>[
+    title: Text(title?? "Dialog title"),
+    content: Text(content??"Simple Dialog content"),
+    actions: actions?? <Widget>[
       TextButton(
-          onPressed: () {
+          onPressed: onCancel?? () {
             Navigator.of(context).pop();
           },
-          child: const Text("Okay"))
+          child: Text(cancel??"cancel")),
+       TextButton(
+          onPressed:onNext?? () {
+            Navigator.of(context).pop();
+          },
+          child: Text(next??"continue"))
     ],
   );
 }
